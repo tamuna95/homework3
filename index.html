@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel  = "stylesheet" type = "text/css" href = "style.css"> 
+        <!-- <link rel  = "stylesheet" type = "text/css" href = "style.css">  -->
         <title>
 
         </title>
@@ -33,7 +33,6 @@
             let btn = document.querySelector('button');
             let form = document.querySelector('form');
             let checkbox = document.querySelector('input.checkboxInput');
-            // let inputcount = document.querySelector('input.taskCounter');
 
             form.addEventListener('submit',(event)=> {
                 event.preventDefault();
@@ -77,7 +76,10 @@
                 checkbox.addEventListener('change',()=>{
                     if(checkbox.checked){
                     li.style.textDecoration = 'line-through';
-                       document.getElementById('counter').innerHTML = counter();
+                    var element = document.getElementById('counter').innerHTML;
+                    element++;
+                    document.getElementById('counter').innerHTML = element;
+
                     
 
 
@@ -96,7 +98,11 @@
 
            document.querySelector('.emptyist').addEventListener('click',()=>{
                 ul.innerHTML ='';
+                document.getElementById('counter').innerHTML ='';
+
            });
+        //    clear All function
+
            
             
         </script>
