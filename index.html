@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel  = "stylesheet" type = "text/css" href = "style.css"> 
+        <title>
+
+        </title>
+        <style>
+            
+        </style>
+    </head>
+    <body>
+       <h1>Task list</h1>
+       <form  id = "add"action="index.php">
+            <input  class = "taskinput"type="text">
+            <button type="submit" >Add Task</button>
+             <ul>
+           
+            </ul>
+        
+           
+       </form>
+       <button class = "emptyist">Clear All</button>
+       <div >
+           <h4>შესრულებული დავალებების რაოდენობაა:</h4>
+           <div id = "counter"></div>
+       </div>
+
+
+        <script>
+            let input =  document.querySelector('input.taskinput');
+            let ul = document.querySelector('ul');
+            let btn = document.querySelector('button');
+            let form = document.querySelector('form');
+            let checkbox = document.querySelector('input.checkboxInput');
+            // let inputcount = document.querySelector('input.taskCounter');
+
+            form.addEventListener('submit',(event)=> {
+                event.preventDefault();
+                
+               //1)get input value
+               let value = input.value
+
+                if(value.length === 0) {
+                    alert("text is required")
+                    return;
+                }
+               //2) add value to the order list
+                let li =  document.createElement('li');
+                let button = document.createElement('button');
+                button.textContent ='delete';
+                button.addEventListener('click',() =>{
+                    console.log("click");
+                    li.remove();
+
+                });
+
+
+                let checkbox = document.createElement('input')
+                checkbox.type = 'checkbox';
+                checkbox.classList.add('checkboxInput');
+
+                
+                li.textContent = value
+
+                button.textContent = "delete";
+                
+                li.appendChild(checkbox)
+                li.appendChild(button);
+                ul.appendChild(li);
+            
+                var counter = (function(){
+                    var counter = 0;
+                    var x =  counter+1
+                    return x;
+                });
+                checkbox.addEventListener('change',()=>{
+                    if(checkbox.checked){
+                    li.style.textDecoration = 'line-through';
+                       document.getElementById('counter').innerHTML = counter();
+                    
+
+
+                        
+
+                        }
+                });
+                
+
+
+               
+               //3) clear the input
+                 input.value = '';
+
+           });
+
+           document.querySelector('.emptyist').addEventListener('click',()=>{
+                ul.innerHTML ='';
+           });
+           
+            
+        </script>
+    </body>
+</html>
